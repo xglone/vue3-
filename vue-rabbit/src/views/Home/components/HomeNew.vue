@@ -1,3 +1,10 @@
+<script setup>
+import Homepanel from '@/views/Home/components/Homepanel.vue'
+
+</script>
 <template>
-    <h1>我是新鲜好物</h1>
+    <Homepanel />
+    <div>
+        我是新鲜好物的插槽
+    </div>
 </template>

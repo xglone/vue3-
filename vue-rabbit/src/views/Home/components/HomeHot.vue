@@ -1,3 +1,9 @@
+<script setup>
+import Homepanel from '@/views/Home/components/Homepanel.vue'
+</script>
 <template>
-    <h1>我是Hot页</h1>
+    <Homepanel />
+    <div>
+        我是人气推荐的插槽
+    </div>
 </template>
