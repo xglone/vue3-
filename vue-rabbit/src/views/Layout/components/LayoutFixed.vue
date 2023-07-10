@@ -1,19 +1,11 @@
 <script setup>
-import { getCotegoryAPI } from '@/apis/layout.js'
-import { onMounted, ref } from 'vue'
-const categoryList = ref([])
-const getCotegory = async () => {
-    const res = await getCotegoryAPI()
-    categoryList.value = res.result
-    console.log(res)
-}
-onMounted(() => {
-    getCotegory()
-})
-
+import { useCategoryStore } from "@/stores/category.js";
 // vueUse 先引入插件
 import { useScroll } from '@vueuse/core'
 const { y } = useScroll(window)
+
+// 使用pinia里的数据
+const categoryStore = useCategoryStore()
 
 console.log(y)
 
@@ -28,7 +20,7 @@ console.log(y)
                 <li class="home">
                     <RouterLink to="/">首页</RouterLink>
                 </li>
-                <li v-for="item in categoryList" :key="item.id">
+                <li v-for="item in categoryStore.categoryList" :key="item.id">
                     <router-link to="/">{{ item.name }}</router-link>
                 </li>
             </ul>
