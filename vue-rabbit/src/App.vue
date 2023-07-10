@@ -6,9 +6,6 @@ import { RouterView } from 'vue-router'
 <template>
   <!-- 一级路由出口文件 -->
   <RouterView />
-  <div class="test">
-    test scss
-  </div>
 </template>
 
 <style scoped lang="scss">
