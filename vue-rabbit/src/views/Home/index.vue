@@ -4,6 +4,12 @@ import HomeBanner from '@/views/Home/components/HomeBanner.vue'
 import HomeNew from '@/views/Home/components/HomeNew.vue'
 import HomeProents from '@/views/Home/components/HomeProents.vue'
 import HomeHot from '@/views/Home/components/HomeHot.vue'
+
+// 触发获取banner轮播的action
+import { usebannerStore } from '@/stores/banner.js'
+import { onMounted } from 'vue'
+const bannerStore = usebannerStore()
+onMounted(() => bannerStore.getBanner())
 </script>
 <template>
     <div class="container">
