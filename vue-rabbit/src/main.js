@@ -8,11 +8,11 @@ import App from './App.vue'
 import router from './router'
 
 // 测试接口函数
-import { getCotegory } from '@/apis/testAPI'
+// import { getCotegory } from '@/apis/testAPI'
 
-getCotegory().then(res => {
-    console.log(res)
-})
+// getCotegory().then(res => {
+//     console.log(res)
+// })
 const app = createApp(App)
 
 
