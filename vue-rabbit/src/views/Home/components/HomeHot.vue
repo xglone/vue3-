@@ -4,7 +4,7 @@ import { getHotAPI } from '@/apis/home.js'
 import { ref } from 'vue';
 
 const hotList = ref([])
-// action获取导航数据的方法
+// action获取人气推荐的方法
 const gethotlist = async () => {
     const res = await getHotAPI()
     hotList.value = res.result
