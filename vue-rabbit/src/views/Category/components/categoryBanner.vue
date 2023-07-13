@@ -5,7 +5,9 @@ import { getbannerAPI } from '@/apis/home.js'
 const bannerList = ref([])
 // action获取导航数据的方法
 const getBanner = async () => {
-    const res = await getbannerAPI()
+    const res = await getbannerAPI({
+        distributionSite: '2'
+    })
     bannerList.value = res.result
     // console.log(res)
 }
@@ -32,7 +34,8 @@ onMounted(() => {
 .home-banner {
     width: 1240px;
     height: 500px;
-    position: absolute;
+    // position: absolute;
+    margin: 0 auto;
     left: 0;
     top: 0;
     z-index: 98;

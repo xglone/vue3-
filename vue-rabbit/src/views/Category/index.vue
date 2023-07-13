@@ -2,6 +2,7 @@
 import { getTopCategoryAPI } from '@/apis/category'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import categoryBanner from '@/views/Category/components/categoryBanner.vue'
 
 // 获取数据
 const categoryDate = ref({})
@@ -25,6 +26,8 @@ onMounted(() => {
                     <el-breadcrumb-item>{{ categoryDate.name }}</el-breadcrumb-item>
                 </el-breadcrumb>
             </div>
+            <!-- 轮播图 -->
+            <categoryBanner />
         </div>
     </div>
 </template>

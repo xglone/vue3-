@@ -5,11 +5,6 @@ import HomeNew from '@/views/Home/components/HomeNew.vue'
 import HomeProduct from '@/views/Home/components/HomeProduct.vue'
 import HomeHot from '@/views/Home/components/HomeHot.vue'
 
-// 触发获取banner轮播的action
-import { usebannerStore } from '@/stores/banner.js'
-import { onMounted } from 'vue'
-const bannerStore = usebannerStore()
-onMounted(() => bannerStore.getBanner())
 </script>
 <template>
     <div class="container">
@@ -20,6 +15,4 @@ onMounted(() => bannerStore.getBanner())
     <HomeHot />
     <HomeProduct />
 </template>
-<style scoped lang="scss">
-.container {}
-</style>
+<style scoped lang="scss"></style>
