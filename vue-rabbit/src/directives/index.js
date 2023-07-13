@@ -17,7 +17,6 @@ export const directivePlugin = {
                             // 进入视口区域
                             el.src = binding.value
                             stop()
-
                         }
                     },
                 )
