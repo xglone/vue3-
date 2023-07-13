@@ -1,4 +1,5 @@
 <script setup>
+import GoodsItem from '@/views/Home/components/GoodsItem.vue'
 import { useBanner } from '@/views/Category/composables/useBanner.js'
 import { useCategory } from '@/views/Category/composables/useCategory.js'
 const { bannerList } = useBanner()
@@ -28,7 +29,7 @@ const { categoryDate } = useCategory()
                 <h3>全部分类</h3>
                 <ul>
                     <li v-for="i in categoryDate.children" :key="i.id">
-                        <RouterLink to="/">
+                        <RouterLink :to="`/Category/sub/${i.id}`">
                             <img :src="i.picture" />
                             <p>{{ i.name }}</p>
                         </RouterLink>
@@ -49,22 +50,22 @@ const { categoryDate } = useCategory()
 
 
 <style scoped lang="scss">
-.home-banner {
-    width: 1240px;
-    height: 500px;
-    // position: absolute;
-    margin: 0 auto;
-    left: 0;
-    top: 0;
-    z-index: 98;
-
-    img {
-        width: 100%;
-        height: 500px;
-    }
-}
-
 .top-category {
+    .home-banner {
+        width: 1240px;
+        height: 500px;
+        // position: absolute;
+        margin: 0 auto;
+        left: 0;
+        top: 0;
+        z-index: 98;
+
+        img {
+            width: 100%;
+            height: 500px;
+        }
+    }
+
     h3 {
         font-size: 28px;
         color: #666;
