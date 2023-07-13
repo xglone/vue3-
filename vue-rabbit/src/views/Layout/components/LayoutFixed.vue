@@ -7,7 +7,7 @@ const { y } = useScroll(window)
 // 使用pinia里的数据
 const categoryStore = useCategoryStore()
 
-console.log(y)
+// console.log(y)
 
 </script>
 
