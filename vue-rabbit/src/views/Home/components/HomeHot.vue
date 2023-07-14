@@ -8,7 +8,7 @@ const hotList = ref([])
 const gethotlist = async () => {
     const res = await getHotAPI()
     hotList.value = res.result
-    console.log(res)
+    // console.log(res)
 }
 gethotlist()
 </script>
