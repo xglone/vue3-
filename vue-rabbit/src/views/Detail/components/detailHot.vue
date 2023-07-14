@@ -3,26 +3,27 @@
 // 1.封装模板
 // 2.调用接口
 import { getHotGoodsAPI } from '@/apis/detail.js'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
-// defineProps({
-//     titles: {
-//         type: String,
-//         default: '', //默认值
+// 设计props 参数
+const props = defineProps({
+    hotType: {
+        type: Number,
+    }
+})
+// 适配title 1-24小时热榜 2-周日热榜
+const typeMap = {
+    1: '24小时热榜',
+    2: '每周热榜'
+}
+const title = computed(() => typeMap[props.hotType])
 
-//     },
-//     hotType: {
-//         type: Number,
-//         default: 1, //默认值
-
-//     }
-// })
 const hotList = ref({})
 const route = useRoute()
 
 const getHotList = async () => {
 
-    const res = await getHotGoodsAPI({ id: route.params.id, tyep: 1, limit: 3 })
+    const res = await getHotGoodsAPI({ id: route.params.id, tyep: props.hotType })
     hotList.value = res.result
     console.log(res)
 }
@@ -32,7 +33,7 @@ onMounted(() => getHotList())
 
 <template>
     <div class="goods-hot">
-        <h3>24小时热榜</h3>
+        <h3>{{ title }}</h3>
         <!-- 商品区块 -->
         <RouterLink to="/" class="goods-item" v-for="item in hotList" :key="item.id">
             <img :src="item.picture" alt="" />
