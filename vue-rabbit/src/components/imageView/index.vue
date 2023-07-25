@@ -40,7 +40,6 @@ watch([elementX, elementY, isOutside], () => {
     if (elementY.value > 100 && elementY.value < 300) {
         top.value = elementY.value - 100
     }
-
     // 处理边界
     // left边界
     if (elementX.value > 300) {
@@ -60,8 +59,6 @@ watch([elementX, elementY, isOutside], () => {
     positionX.value = -left.value * 2
     positionY.value = -top.value * 2
 })
-
-
 </script>
 
 
