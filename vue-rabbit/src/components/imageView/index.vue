@@ -1,5 +1,5 @@
 <script setup>
-import { useMouseInElement } from '@vueuse/core';
+import { useMouseInElement } from '@vueuse/core'
 import { ref, watch } from 'vue'
 // 图片列表
 const imageList = [
@@ -19,11 +19,17 @@ const enterhandler = (i) => {
 // 2.获取鼠标在大盒子里面的位置
 const target = ref(null)
 const { elementX, elementY, isOutside } = useMouseInElement(target)
-
 // 3.控制滑块跟随鼠标移动（监听elementX/Y变化， 一旦变化，重新设置left/top
 const left = ref(0)
 const top = ref(0)
-watch([elementX, elementY], () => {
+
+// 声明大图的两个移动距离
+const positionX = ref(0)
+const positionY = ref(0)
+watch([elementX, elementY, isOutside], () => {
+    // 如果鼠标没有移动到盒子里面，直接不执行后面的逻辑
+    if (isOutside.value) return
+    // console.log('后面的逻辑执行了')
     // 有效范围内控制滑块距离
     // 横向
     if (elementX.value > 100 && elementX.value < 300) {
@@ -49,18 +55,22 @@ watch([elementX, elementY], () => {
     if (elementY.value < 100) {
         top.value = 0
     }
+    // 控制大图显示
+    positionX.value = -left.value * 2
+    positionY.value = -top.value * 2
 })
+
+
 </script>
 
 
 <template>
-    {{ elementX }},{{ elementY }},{{ isOutside }}{{ top }}{{ left }}
     <div class="goods-image">
         <!-- 左侧大图-->
         <div class="middle" ref="target">
             <img :src="imageList[activeIndex]" alt="" />
             <!-- 蒙层小滑块 -->
-            <div class="layer" :style="{ left: `${left}px`, top: `${top}px` }"></div>
+            <div class="layer" :style="{ left: `${left}px`, top: `${top}px` }" v-show="!isOutside"></div>
         </div>
         <!-- 小图列表 -->
         <ul class="small">
@@ -71,11 +81,11 @@ watch([elementX, elementY], () => {
         <!-- 放大镜大图 -->
         <div class="large" :style="[
             {
-                backgroundImage: `url(${imageList[0]})`,
-                backgroundPositionX: `0px`,
-                backgroundPositionY: `0px`,
+                backgroundImage: `url(${imageList[activeIndex]})`,
+                backgroundPositionX: `${positionX}px`,
+                backgroundPositionY: `${positionY}px`,
             },
-        ]" v-show="false"></div>
+        ]" v-show="!isOutside"></div>
     </div>
 </template>
 
@@ -114,7 +124,6 @@ watch([elementX, elementY], () => {
         left: 0;
         top: 0;
         position: absolute;
-        // display: none;
     }
 
     .small {

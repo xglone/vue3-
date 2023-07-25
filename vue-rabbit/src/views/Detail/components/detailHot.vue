@@ -25,7 +25,7 @@ const getHotList = async () => {
 
     const res = await getHotGoodsAPI({ id: route.params.id, tyep: props.hotType })
     hotList.value = res.result
-    console.log(res)
+    // console.log(res)
 }
 onMounted(() => getHotList())
 </script>
