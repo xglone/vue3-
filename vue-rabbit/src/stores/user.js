@@ -12,8 +12,12 @@ export const userUserStore = defineStore('user', () => {
         userInfo.value = res.result
         // console.log(res)
     }
+    // 退出时清除用户信息
+    const clearUserInfo = () => {
+        userInfo.value = {}
+    }
     // 3.return返回对象格式的state 和action
-    return { userInfo, getUserInfo }
+    return { userInfo, getUserInfo, clearUserInfo }
 },
     {
         persist: true,
