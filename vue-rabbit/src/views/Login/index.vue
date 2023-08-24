@@ -4,7 +4,7 @@ import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 
 
-import { userUserStore } from '@/stores/user.js'
+import { userUserStore } from '@/stores/userStore.js'
 
 const userStore = userUserStore()
 // 表单校验（账户名+密码）

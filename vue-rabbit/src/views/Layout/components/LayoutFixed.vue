@@ -1,5 +1,5 @@
 <script setup>
-import { useCategoryStore } from "@/stores/category.js";
+import { useCategoryStore } from "@/stores/categoryStore.js";
 // vueUse 先引入插件
 import { useScroll } from '@vueuse/core'
 const { y } = useScroll(window)

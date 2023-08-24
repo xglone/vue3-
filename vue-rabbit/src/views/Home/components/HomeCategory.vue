@@ -1,5 +1,5 @@
 <script setup>
-import { useCategoryStore } from "@/stores/category.js";
+import { useCategoryStore } from "@/stores/categoryStore.js";
 // 使用pinia里的数据
 const categoryStore = useCategoryStore()
 </script>
