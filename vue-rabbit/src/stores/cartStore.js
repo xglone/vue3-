@@ -74,6 +74,11 @@ export const userCartStore = defineStore('cart', () => {
         cartList.value.forEach(item => item.selected = selected)
     }
 
+    // 定义一个清除购物车
+    const clearCart = () => {
+        cartList.value = []
+    }
+
     // 3.已选择数量
     const selectedCount = computed(() => cartList.value.filter(item => item.selected).reduce((a, c) => a + c.count, 0))
     // 4.已选择商品价钱合计
@@ -92,7 +97,8 @@ export const userCartStore = defineStore('cart', () => {
         addCart,
         delCart,
         singleCheck,
-        allCheck
+        allCheck,
+        clearCart
     }
 }, {
     persist: true,
