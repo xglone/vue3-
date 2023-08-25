@@ -41,6 +41,11 @@ const router = createRouter({
           name: 'checkout',
           component: () => import('@/views/checkout/index.vue'),
         },
+        {
+          path: 'pay',
+          name: 'pay',
+          component: () => import('@/views/pay/index.vue'),
+        },
 
       ]
 
@@ -49,7 +54,8 @@ const router = createRouter({
       path: '/Login',
       name: 'Login',
       component: () => import('@/views/Login/index.vue')
-    }
+    },
+
   ],
   // 路由滚动行为定制
   scrollBehavior() {
