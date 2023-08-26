@@ -33,6 +33,17 @@ const tabTypes = [
     { name: "complete", label: "已完成" },
     { name: "cancel", label: "已取消" }
 ]
+const fomartPayState = (payState) => {
+    const stateMap = {
+        1: '待付款',
+        2: '待发货',
+        3: '待收货',
+        4: '待评价',
+        5: '已完成',
+        6: '已取消',
+    }
+    return stateMap[payState]
+}
 // tab切换
 const tabChange = (type) => {
     params.value.orderState = type
@@ -86,7 +97,7 @@ onMounted(() => {
                                 </ul>
                             </div>
                             <div class="column state">
-                                <p>{{ order.orderState }}</p>
+                                <p>{{ fomartPayState(order.orderState) }}</p>
                                 <p v-if="order.orderState === 3">
                                     <a href="javascript:;" class="green">查看物流</a>
                                 </p>
