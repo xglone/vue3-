@@ -51,6 +51,23 @@ const router = createRouter({
           name: 'paycallback',
           component: () => import('@/views/pay/payBack.vue'),
         },
+        {
+          path: 'member',
+          name: 'member',
+          component: () => import('@/views/Member/index.vue'),
+          children: [
+            {
+              path: 'user',
+              name: 'user',
+              component: () => import('@/views/Member/components/UserInfo.vue'),
+            },
+            {
+              path: 'order',
+              name: 'order',
+              component: () => import('@/views/Member/components/UserOrder.vue'),
+            }
+          ]
+        }
 
       ]
 
